@@ -25,7 +25,8 @@ void enqueue(int n)
         printf("queue full!\n");
         return;
     }
-    tail++;
+    //tail++;
+    tail = (tail+1) % QUEUE_CAPACITY;
     queue_size++;
     queue[tail] = n;
     
@@ -42,7 +43,7 @@ int dequeue()
     }
     queue_size--;
     int r = queue[head];
-    //head++;
+    head = (head+1) % QUEUE_CAPACITY;
     printf("head : %d, queue_size : %d \n", head, queue_size);
     
     //원소를 하나 꺼낼 때 마다 배열의 모든 원소를 한 칸씩 앞으로 움직이는 코드이다!
@@ -50,8 +51,8 @@ int dequeue()
     //원소를 넣을 수 있다.
     //하지만 큐에서 원소를 뺄 때마다 배열의 원소를 모두 한 칸씩 앞으로 이동 시키면
     //시간이 많이 걸린다.
-    left_rotate3(queue, tail, head);
-    tail--;
+    //left_rotate3(queue, tail, head);
+    //tail--;
     return r;
 }
 
