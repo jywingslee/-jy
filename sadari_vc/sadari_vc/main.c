@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define H 3 // 사다리 길이
 #define W 3 // 사람 수
@@ -37,10 +38,12 @@ int gameStart(int start_people)
         else {
             if(start_people+1 <=W && map[i][start_people+1] == 1)
             {
+                //사다리가 오른쪽에 있는 경우 오른쪽으로 이동합니다.
                 start_people++;
             }
             else if(start_people-1 >=0 && map[i][start_people-1] == 1)
             {
+                //사다리가 왼쪽에 있는 경우 왼쪽으로 이동합니다.
                 start_people--;
             }
         }
@@ -60,12 +63,14 @@ int main(int argc, const char * argv[]) {
     // 3 x o o
     // o -> 다리가 있는 경우
     // x -> 다리가 없는 경우
+    int x = 'x';
+    printf("%d %d ", x, 'x');
     
     int start, result;
     printf("사다리 게임을 시작할 출발 지점을 입력하세요 (x는 입력 완료)\n");
     scanf("%d", &start);
     
-    while(start != 'x')
+    while( itoa(start) != 'x')
     {
         result = gameStart(start);
         printf("> %d\n", result);

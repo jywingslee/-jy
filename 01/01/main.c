@@ -38,8 +38,8 @@ void print_all_List()
 {
     while(queue_size--)
     {
-        printf("%d ", queue[tail]);
-        tail++;
+        printf("%d ", queue[head]);
+        head = (head+1)%QUEUE_CAPACITY;
     }
 }
 
